@@ -43,6 +43,7 @@ maintainer-clean ::
 	@echo "it deletes files that may require special tools to rebuild."
 
 $(standard_GNU_targets) installcheck installdebug ::
+	groff -t -p -Tps -ms rcs.ms >rcs.ps
 	cd man && $(MAKE) $@
 	cd src && $(MAKE) $@
 
@@ -77,7 +78,7 @@ Makefile : Makefile.in config.status
 
 clean :: clean.
 clean. ::
-	rm -f confdefs* conftest* core core.* *.core
+	rm -f confdefs* conftest* core core.* *.core *.ps
 
 distclean maintainer-clean :: distclean.
 distclean. :: clean.
