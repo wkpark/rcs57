@@ -34,8 +34,8 @@ INSTALL_DATA = @INSTALL_DATA@
 PIC = @PIC@
 
 prefix = @prefix@
-man1dir = $(prefix)/man/man1
-man5dir = $(prefix)/man/man5
+man1dir = $(prefix)/share/man/man1
+man5dir = $(prefix)/share/man/man5
 man1ext = .1
 man5ext = .5
 
@@ -51,7 +51,8 @@ check dvi info TAGS ::
 installdirs :: ../mkinstalldirs
 	-$(srcdir)/../mkinstalldirs $(man1dir) $(man5dir)
 
-man1pages = ci co ident merge rcs rcsclean rcsdiff rcsintro rcsmerge rlog
+man1pages = ci co ident merge rcs rcsclean rcsdiff rcsintro rcsmerge rlog \
+		rcsfreeze
 
 install :: installdirs
 	-for m in $(man1pages); do \

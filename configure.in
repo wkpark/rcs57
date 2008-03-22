@@ -243,7 +243,7 @@ rm -f conftest*
 AC_PATH_PROG(ED, ed, ed)
 
 ac_save_path=$PATH
-PATH=/usr/lib:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
+PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/lib:$PATH
 AC_PATH_PROGS(SENDMAIL, sendmail mail mailx)
 PATH=$ac_save_path
 case $SENDMAIL in

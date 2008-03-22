@@ -116,16 +116,18 @@ install :: all installdirs
 	for p in $(PROGRAMS); do \
 	  $(INSTALL_PROGRAM) $$p $(bindir)/$$p; \
 	done
+	$(INSTALL_PROGRAM) rcsfreeze.sh $(bindir)/rcsfreeze
 
 uninstall ::
 	for p in $(PROGRAMS); do \
 	  $(REMOVE) $(bindir)/$$p; \
 	done
+	$(REMOVE) $(bindir)/rcsfreeze
 
 # Install RCS and (if applicable) GNU diff before running these tests.
 # To test RCS before installing it, see the file INSTALL.RCS.
 RCSTEST = \
-	ALL_CFLAGS='$(ALL_CFLAGS)' CC='$(CC)' DIFF='$(DIFF)' \
+	ALL_CFLAGS="$(ALL_CFLAGS)" CC='$(CC)' DIFF='$(DIFF)' \
 	LDFLAGS='$(LDFLAGS)' LIBS='$(LIBS)' \
 	PATH=$(bindir):$$PATH \
 	sh $(srcdir)/rcstest
@@ -153,7 +155,7 @@ maintainer-clean :: distclean
 #(Unix
 conf.h : conf.sh Makefile
 	$(REMOVE) a.*
-	ALL_CFLAGS='$(ALL_CFLAGS)' \
+	ALL_CFLAGS="$(ALL_CFLAGS)" \
 	CC='$(CC)' \
 	COMPAT2='$(COMPAT2)' \
 	DIFF3='$(DIFF3)' DIFF3_BIN='$(DIFF3_BIN)' \
