@@ -916,10 +916,11 @@ scanlogtext(delta,edit)
 		getkeystring(Klog);
 		if (nextdelta == cuttail) {
 			cb = savestring(&curlogbuf);
-			if (!delta->log.string)
+			if (delta && !delta->log.string)
 			    delta->log = cleanlogmsg(curlogbuf.string, cb.size);
 			nextlex();
-			delta->igtext = getphrases(Ktext);
+			if (delta)
+				delta->igtext = getphrases(Ktext);
 		} else {
 			if (nextdelta->log.string && nextdelta->selector) {
 				foutptr = 0;
