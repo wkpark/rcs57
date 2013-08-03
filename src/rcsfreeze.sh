@@ -59,8 +59,7 @@ rcsfreeze: give log message, summarizing changes (end with EOF or single '.')" \
 
 # Stamp the logfile. Because we order the logfile the most recent
 # first we will have to save everything right now in a temporary file.
-TMPLOG=/tmp/rcsfrz$$
-trap 'rm -f $TMPLOG; exit 1' 1 2 13 15
+TMPLOG=$(tempfile)
 # Now ask for a log message, continously add to the log file
 (
 	echo "Version: $SYMREVNAME($SYMREV), Date: $DATE
