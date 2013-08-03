@@ -1546,7 +1546,7 @@ buildeltatext(deltas)
 	    *++diffp = DIFFFLAGS;
 #	    if OPEN_O_BINARY
 		if (Expand == BINARY_EXPAND)
-		    *++diffp == "--binary";
+		    *++diffp = "--binary";
 #	    endif
 	    *++diffp = "-";
 	    *++diffp = resultname;
